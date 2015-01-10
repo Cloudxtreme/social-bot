@@ -1,0 +1,9 @@
+{
+    "name": "my-project",
+    "version": "1.0.0",
+    "require": {
+        "lichtner/fluentpdo": "dev-master",
+        "katzgrau/klogger": "1.0.*",
+        "facebook/php-sdk-v4" : "4.0.*"
+    }
+}
