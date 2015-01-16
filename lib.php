@@ -3,7 +3,7 @@
 function update_quotes_into_database($path) {
 
 	global $db;
-	$logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
+	global $logger;
 
 	$files = scandir($path);
 	
@@ -11,7 +11,6 @@ function update_quotes_into_database($path) {
 	 * insert all filenames into 'images' table
 	 */
 	foreach ($files as $i => $file) {
-		$logger->info("File <$i>:<$file>");
 
 		if (!startsWith($file, '.')) {
 

@@ -16,7 +16,9 @@ set_error_handler("exception_error_handler");
  *	Library configuration 
  */
 require 'vendor/autoload.php';
+require 'Bot.php';
 require 'lib.php';
+require 'facelib.php';
 require 'stringer.php';
 
 /* 
@@ -30,13 +32,14 @@ $DB_DSN = "mysql:host=127.0.0.1; dbname=$DATABASE; charset=utf8";
 $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASS);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+// $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $db = new FluentPDO($pdo);
 
 /* 
  *	Auth configuration 
  */
 
-FacebookSession::setDefaultApplication('784700351595980', 'dc970312434199e79a1f3826ec458983');
+Facebook\FacebookSession::setDefaultApplication('784700351595980', 'dc970312434199e79a1f3826ec458983');
 
 // $client 2= Discogs\ClientFactory::factory([]);
 // $oauth = new GuzzleHttp\Subscriber\Oauth\Oauth1([
@@ -48,4 +51,8 @@ FacebookSession::setDefaultApplication('784700351595980', 'dc970312434199e79a1f3
 
 // $client->getHttpClient()->getEmitter()->attach($oauth);
 
-$BASE_PATH = "tmp/";
+$logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
+
+define("BASE_PATH", "");
+define("QUOTES_PATH", "D:\\drive\\frases\\");
+define("TMP_PATH", "tmp");

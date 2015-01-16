@@ -7,11 +7,11 @@ CREATE TABLE
     (
         id bigint NOT NULL AUTO_INCREMENT,
         name VARCHAR(255),
-        facebook_token VARCHAR(255),
+        facebook_token TEXT,
         facebook_secret VARCHAR(255),
         twitter_token VARCHAR(255),
         twitter_secret VARCHAR(255),
-        status VARCHAR(10) NOT NULL,
+        status VARCHAR(10) DEFAULT 'A' NOT NULL,
         created_on DATETIME,
         updated_on DATETIME,
         email VARCHAR(255),
