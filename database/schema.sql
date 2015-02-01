@@ -7,14 +7,14 @@ CREATE TABLE
     (
         id bigint NOT NULL AUTO_INCREMENT,
         name VARCHAR(255),
-        facebook_token TEXT,
-        facebook_secret VARCHAR(255),
         twitter_token VARCHAR(255),
         twitter_secret VARCHAR(255),
         status VARCHAR(10) DEFAULT 'A' NOT NULL,
         created_on DATETIME,
         updated_on DATETIME,
         email VARCHAR(255),
+        facebook_token_tmp TEXT,
+        facebook_token TEXT,
         PRIMARY KEY (id)
     )
     ENGINE=InnoDB DEFAULT CHARSET=latin1;

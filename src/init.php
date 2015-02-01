@@ -18,7 +18,7 @@ set_error_handler("exception_error_handler");
 require 'vendor/autoload.php';
 require 'Bot.php';
 require 'lib.php';
-require 'facelib.php';
+require 'FacebookHelper.php';
 require 'stringer.php';
 
 /* 
@@ -39,7 +39,9 @@ $db = new FluentPDO($pdo);
  *	Auth configuration 
  */
 
-Facebook\FacebookSession::setDefaultApplication('784700351595980', 'dc970312434199e79a1f3826ec458983');
+define('FACEBOOK_APP_ID', '784700351595980');
+define('FACEBOOK_APP_SECRET', 'dc970312434199e79a1f3826ec458983');
+Facebook\FacebookSession::setDefaultApplication(FACEBOOK_APP_ID, FACEBOOK_APP_SECRET);
 
 // $client 2= Discogs\ClientFactory::factory([]);
 // $oauth = new GuzzleHttp\Subscriber\Oauth\Oauth1([
@@ -54,5 +56,5 @@ Facebook\FacebookSession::setDefaultApplication('784700351595980', 'dc9703124341
 $logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
 
 define("BASE_PATH", "");
-define("QUOTES_PATH", "D:\\drive\\frases\\");
+define("QUOTES_PATH", "D:\\drive\\marketing\\facebook_fer\\");
 define("TMP_PATH", "tmp");

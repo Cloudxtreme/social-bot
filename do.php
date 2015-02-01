@@ -1,6 +1,6 @@
 <?php
 // configure cron tu run every 10 minutes
-require "init.php";
+require "src/init.php";
 
 // actualizar base de datos con listado de frases
 update_quotes_into_database(QUOTES_PATH);

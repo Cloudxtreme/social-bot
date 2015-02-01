@@ -5,14 +5,14 @@ class Bot {
 	private $logger;
 	private $actions;
 	private $facebook_session;
+	private $fb;
 
-
-	protected $tor = FALSE;
-	
 	function __construct() {
 		global $logger, $db;
         $this->logger = $logger;
         $this->db = $db;
+        
+        $this->fb = new FacebookHelper();
 	}
 
 	function run() {
@@ -85,10 +85,10 @@ class Bot {
 					->where("id = ?", $action['person_id'])
 					->fetch(); // 'fetch' is to get only one, not array
 
-		print_r($person);
+		// print_r($person);
 		switch ($action['social_network']) {
 			case 'facebook':
-				$this->facebook_session = facebook_login($person['facebook_token']);
+				$this->facebook_session = $this->fb->login($person);
 				break;
 
 			case 'twitter':
@@ -107,7 +107,7 @@ class Bot {
 	function post_image($source, $social_network) {
 		switch ($social_network) {
 			case 'facebook':
-				upload_image($source, $this->facebook_session);
+				$this->fb->upload_image($source);
 				break;
 
 			case 'twitter':
